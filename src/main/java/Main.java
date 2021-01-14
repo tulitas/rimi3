@@ -1,32 +1,26 @@
+import java.util.HashMap;
+import java.util.Map;
+
 class Main
 {
-    // Naive method to find a pair in an array with a given sum
-    public static void findPair(int[] A, int sum)
-    {
-        // consider each element except the last
-        for (int i = 0; i < A.length - 1; i++)
-        {
-            // start from the i'th element till the last element
-            for (int j = i + 1; j < A.length; j++)
-            {
-                // if the desired sum is found, print it and return
-                if (A[i] + A[j] == sum)
-                {
-                    System.out.println("Pair found at index " + i + " and " + j);
-                    return;
-                }
-            }
-        }
+    public static void main(String[] args) {
 
-        // No pair with the given sum exists in the array
-        System.out.println("Pair not found");
+        int []a = {2,45,7,3,5,1,8,9, -34};
+        printSumPairs(a,11);
+
     }
 
-    public static void main (String[] args)
-    {
-        int[] A = { 8, 7, 2, 5, 3, 1 };
-        int sum = 10;
 
-        findPair(A, sum);
+    public static void printSumPairs(int []input, int k){
+        Map<Integer, Integer> pairs = new HashMap<Integer, Integer>();
+
+        for(int i=0;i<input.length;i++){
+
+            if(pairs.containsKey(input[i]))
+                System.out.println(input[i] +", "+ pairs.get(input[i]));
+            else
+                pairs.put(k-input[i], input[i]);
+        }
+
     }
 }
